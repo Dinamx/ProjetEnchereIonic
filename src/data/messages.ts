@@ -7,19 +7,19 @@ export interface Message {
 
 const messages: Message[] = [
   {
-    fromName: 'Matt Chorsey',
-    subject: 'New event: Trip to Vegas',
+    fromName: 'Enchere1',
+    subject: 'Enchere stuffs',
     date: '9:32 AM',
     id: 0
   },
   {
-    fromName: 'Lauren Ruthford',
-    subject: 'Long time no chat',
+    fromName: 'Enchere 2',
+    subject: 'Stuffs ',
     date: '6:12 AM',
     id: 1
   },
   {
-    fromName: 'Jordan Firth',
+    fromName: 'Enchere 3',
     subject: 'Report Results',
     date: '4:55 AM',
     id: 2
