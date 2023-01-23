@@ -2,17 +2,23 @@ import MessageListItem from '../components/MessageListItem';
 import { useState } from 'react';
 import { Message, getMessages } from '../data/messages';
 import {
+  IonButtons,
   IonContent,
   IonHeader,
   IonList,
+  IonMenu,
+  IonMenuButton,
   IonPage,
   IonRefresher,
   IonRefresherContent,
+  IonSplitPane,
   IonTitle,
   IonToolbar,
   useIonViewWillEnter
 } from '@ionic/react';
-import './Home.css';
+import Menu from '../components/Menu';
+import Auction from '../components/Auction';
+
 
 const Home: React.FC = () => {
 
@@ -30,30 +36,67 @@ const Home: React.FC = () => {
   };
 
   return (
-    <IonPage id="home-page">
-      <IonHeader>
+
+    <IonSplitPane when="xl" contentId="main">
+      {/* Menu and all Links */}
+      <Menu></Menu>
+
+
+      <div className="ion-page" id="main">
         <IonToolbar>
-          <IonTitle>Bienvenue</IonTitle>
+          <IonButtons slot="start">
+            <IonMenuButton />
+          </IonButtons>
+          <IonTitle>Main Page</IonTitle>
         </IonToolbar>
-      </IonHeader>
-      <IonContent fullscreen>
-        <IonRefresher slot="fixed" onIonRefresh={refresh}>
-          <IonRefresherContent></IonRefresherContent>
-        </IonRefresher>
+        <IonContent className="ion-padding">
+          <Auction></Auction>
+        </IonContent>
+      </div>
+    </IonSplitPane>
 
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">
-              Inbox
-            </IonTitle>
-          </IonToolbar>
-        </IonHeader>
+    // <IonPage id="home-page">
+    //   <IonHeader>
+    //     <IonToolbar>
+    //       <IonButtons slot="start">
+    //         <IonMenuButton></IonMenuButton>
+    //       </IonButtons>
+    //       <IonTitle>Bienvenue</IonTitle>
 
-        <IonList>
-          {messages.map(m => <MessageListItem key={m.id} message={m} />)}
-        </IonList>
-      </IonContent>
-    </IonPage>
+    //     </IonToolbar>
+    //   </IonHeader>
+    //   <IonContent fullscreen>
+    //     {/* <IonRefresher slot="fixed" onIonRefresh={refresh}>
+    //       <IonRefresherContent></IonRefresherContent>
+    //     </IonRefresher> */}
+
+    //     <IonHeader collapse="condense">
+    //       <IonToolbar>
+    //         <IonTitle size="large">
+    //           Inbox
+    //         </IonTitle>
+    //       </IonToolbar>
+    //     </IonHeader>
+
+    //     <IonList>
+    //       {messages.map(m => <MessageListItem key={m.id} message={m} />)}
+    //     </IonList>
+    //   </IonContent>
+
+
+    //   <IonMenu side="start" contentId="home-page">
+    //     <IonHeader>
+    //       <IonToolbar>
+    //         <IonTitle>Menu</IonTitle>
+    //       </IonToolbar>
+    //     </IonHeader>
+    //     <IonContent>
+    //       {/* your menu items here */}
+    //     </IonContent>
+    //   </IonMenu>
+
+
+    // </IonPage>
   );
 };
 
