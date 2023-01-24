@@ -24,6 +24,7 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import AddAuction from './pages/AddAuction';
 
 setupIonicReact();
 
@@ -32,6 +33,7 @@ const App: React.FC = () => (
     <IonReactRouter>
       <IonRouterOutlet>
         <Route path="/" exact={true}>
+          {/* <Redirect to="/login" /> */}
           <Redirect to="/login" />
         </Route>
         {/* Login */}
@@ -45,6 +47,14 @@ const App: React.FC = () => (
         {/* List of All Auctions */}
         <Route path="/home" exact={true}>
           <Home />
+        </Route>
+        {/* List of an auction */}
+        <Route path="/auction/:id" exact={true}>
+          <Home />
+        </Route>
+        {/* Add an auction */}
+        <Route path="/auction/new" exact={true}>
+          <AddAuction />
         </Route>
         {/* One Auction */}
         <Route path="/message/:id">
