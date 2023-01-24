@@ -50,7 +50,7 @@ const Auction: React.FC = () => {
                                 </IonItem>
                                 <IonItem detail={false} >
                                     {/* <IonLabel> */}
-                                    <IonButton>See More</IonButton>
+                                    <IonButton>See Mor  e</IonButton>
                                     {/* <h3>About Blabla</h3> */}
                                     {/* </IonLabel> */}
                                 </IonItem>
