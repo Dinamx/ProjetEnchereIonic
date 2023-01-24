@@ -25,6 +25,8 @@ import './theme/variables.css';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import AddAuction from './pages/AddAuction';
+import Auction from './components/Auction';
+import AuctionDetail from './pages/AuctionDetails';
 
 setupIonicReact();
 
@@ -48,10 +50,12 @@ const App: React.FC = () => (
         <Route path="/home" exact={true}>
           <Home />
         </Route>
+
         {/* List of an auction */}
-        <Route path="/auction/:id" exact={true}>
-          <Home />
-        </Route>
+        <Route path="/auction/:idAuction" component={AuctionDetail} exact={true} />
+        {/* <Route path="/auction/:id" exact={true}>
+          <AuctionDetail history={undefined} location={undefined} match={undefined} />
+        </Route> */}
         {/* Add an auction */}
         <Route path="/auction/new" exact={true}>
           <AddAuction />
