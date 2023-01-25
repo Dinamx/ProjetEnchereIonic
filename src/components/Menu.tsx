@@ -7,7 +7,7 @@ const routes = {
         { title: 'Home', path: '/home', icon: addCircleOutline },
         { title: 'Ajouter une nouvelle enchere', path: '/auction/new', icon: peopleOutline },
         { title: 'Mes encheres', path: '/myauctions', icon: albums },
-        { title: 'Recharger mon compte', path: '/account', icon: mapOutline },
+        { title: 'Recharger mon compte', path: '/rechargeAccount', icon: mapOutline },
         { title: 'Notification', path: '/notifications', icon: informationCircleOutline }
     ]
 };
