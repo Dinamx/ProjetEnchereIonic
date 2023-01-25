@@ -1,24 +1,19 @@
-import { useState } from 'react';
-import { Message } from '../data/messages';
 import {
     IonButtons,
     IonContent,
+    IonItem,
+    IonLabel,
+    IonList,
     IonMenuButton,
     IonSplitPane,
     IonTitle,
     IonToolbar,
 } from '@ionic/react';
 import Menu from '../components/Menu';
-import { RouteComponentProps } from 'react-router-dom';
 
-interface IdAuction
-    extends RouteComponentProps<{
-        idAuction: string;
-    }> { }
 
-const AuctionDetail: React.FC<IdAuction> = ({ match }) => {
-    console.log(match.params.idAuction);
-    const [messages, setMessages] = useState<Message[]>([]);
+const Notifications: React.FC = () => {
+    // console.log(match.params.idAuction);
     return (
 
         <IonSplitPane when="xl" contentId="main">
@@ -29,14 +24,18 @@ const AuctionDetail: React.FC<IdAuction> = ({ match }) => {
                     <IonButtons slot="start">
                         <IonMenuButton />
                     </IonButtons>
-                    <IonTitle>Voici l'enchere numero </IonTitle>
+                    <IonTitle>Mes notifications</IonTitle>
                 </IonToolbar>
                 <IonContent className="ion-padding">
-                    <h3></h3>
+                    <IonList>
+                        <IonItem>
+                            <IonLabel>Notification</IonLabel>
+                        </IonItem>
+                    </IonList>
                 </IonContent>
             </div>
         </IonSplitPane>
     )
 };
 
-export default AuctionDetail;
+export default Notifications;

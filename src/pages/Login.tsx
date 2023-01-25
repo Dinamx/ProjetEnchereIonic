@@ -40,6 +40,7 @@ const Login: React.FC = () => {
 
     const login = async (e: React.FormEvent) => {
         history.push('/home', { direction: 'none' });
+        // setLocalStorage('id');
         // e.preventDefault();
         setFormSubmitted(true);
         if (!username) {

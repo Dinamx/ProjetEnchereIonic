@@ -27,6 +27,8 @@ import Signup from './pages/Signup';
 import AddAuction from './pages/AddAuction';
 import Auction from './components/Auction';
 import AuctionDetail from './pages/AuctionDetails';
+import Notification from './pages/Notifications';
+import Notifications from './pages/Notifications';
 
 setupIonicReact();
 
@@ -59,6 +61,10 @@ const App: React.FC = () => (
         {/* Add an auction */}
         <Route path="/auction/new" exact={true}>
           <AddAuction />
+        </Route>
+        {/* Notifications */}
+        <Route path="/notifications" exact={true}>
+          <Notifications />
         </Route>
         {/* One Auction */}
         <Route path="/message/:id">

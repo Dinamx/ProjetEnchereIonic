@@ -8,7 +8,7 @@ ion-card {
 }
 
 ion-content {
-    background: green;
+    background: rgb(255, 255, 255);
 }
 
 ion-content ion-card {

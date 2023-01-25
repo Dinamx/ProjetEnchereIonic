@@ -1,25 +1,16 @@
 import {
     IonAvatar,
     IonButton,
-    IonButtons,
     IonCard,
     IonCardContent,
     IonCardHeader,
     IonCol,
-    IonContent,
     IonGrid,
     IonItem,
     IonLabel,
     IonList,
-    IonMenu,
-    IonMenuButton,
-    IonNote,
     IonRow,
-    IonTitle,
-    IonToolbar
 } from '@ionic/react';
-import { Message } from '../data/messages';
-import './MessageListItem.css';
 
 
 
