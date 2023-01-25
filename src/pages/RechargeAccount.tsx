@@ -2,6 +2,7 @@ import MessageListItem from '../components/MessageListItem';
 import { useState } from 'react';
 import { Message, getMessages } from '../data/messages';
 import {
+    IonButton,
     IonButtons,
     IonContent,
     IonHeader,
@@ -25,6 +26,9 @@ import Auction from '../components/Auction';
 
 
 const RechargeAccount: React.FC = () => {
+    const handleSubmit = () => {
+
+    }
 
     const [messages, setMessages] = useState<Message[]>([]);
     const [price, setPrice] = useState(0.0);
@@ -60,6 +64,9 @@ const RechargeAccount: React.FC = () => {
                             <IonInput type="number" value={price} onIonChange={e => setPrice(parseFloat(e.detail.value!))} />
                             <IonLabel position="floating">Ar</IonLabel>
                         </IonRow>
+                    </IonItem>
+                    <IonItem>
+                        <IonButton onClick={handleSubmit}>Valider</IonButton>
                     </IonItem>
                 </IonContent>
             </div>
