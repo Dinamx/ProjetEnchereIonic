@@ -1,12 +1,12 @@
 import { IonContent, IonIcon, IonItem, IonLabel, IonMenu, IonMenuToggle, IonTitle, IonToolbar } from '@ionic/react';
-import { peopleOutline, mapOutline, informationCircleOutline, person, help, logOut, logIn, personAdd, addCircleOutline } from 'ionicons/icons';
+import { peopleOutline, mapOutline, informationCircleOutline, person, help, logOut, logIn, personAdd, addCircleOutline, albums } from 'ionicons/icons';
 import { useLocation } from 'react-router-dom';
 // Liste des liens a ajouter sur le menu
 const routes = {
     appPages: [
         { title: 'Home', path: '/home', icon: addCircleOutline },
-        { title: 'Ajouter une nouvelle enchere', path: '/auction', icon: addCircleOutline },
-        { title: 'Mes encheres', path: '/myauctions', icon: peopleOutline },
+        { title: 'Ajouter une nouvelle enchere', path: '/auction/new', icon: peopleOutline },
+        { title: 'Mes encheres', path: '/myauctions', icon: albums },
         { title: 'Recharger mon compte', path: '/account', icon: mapOutline },
         { title: 'Notification', path: '/notifications', icon: informationCircleOutline }
     ]
@@ -36,9 +36,8 @@ const Menu: React.FC = () => {
 
 
     return (
-        <IonMenu contentId="main">
+        <IonMenu contentId="main" >
             <IonToolbar>
-
                 <IonTitle>Menus</IonTitle>
             </IonToolbar>
             <IonContent className="ion-padding">

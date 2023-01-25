@@ -52,12 +52,10 @@ const App: React.FC = () => (
         <Route path="/home" exact={true}>
           <Home />
         </Route>
-
         {/* List of an auction */}
-        <Route path="/auction/:idAuction" component={AuctionDetail} exact={true} />
-        {/* <Route path="/auction/:id" exact={true}>
-          <AuctionDetail history={undefined} location={undefined} match={undefined} />
-        </Route> */}
+        <Route path="/auction/:id" exact={true}>
+          <Home />
+        </Route>
         {/* Add an auction */}
         <Route path="/auction/new" exact={true}>
           <AddAuction />
