@@ -25,9 +25,7 @@ import './theme/variables.css';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import AddAuction from './pages/AddAuction';
-import Auction from './components/Auction';
 import AuctionDetail from './pages/AuctionDetails';
-import Notification from './pages/Notifications';
 import Notifications from './pages/Notifications';
 import RechargeAccount from './pages/RechargeAccount';
 
@@ -55,7 +53,6 @@ const App: React.FC = () => (
         </Route>
         {/* List of an auction */}
         <Route path="/auction/:id" exact={true}>
-          <Home />
         </Route>
         {/* Add an auction */}
         <Route path="/auction/new" exact={true}>
@@ -69,10 +66,9 @@ const App: React.FC = () => (
         <Route path="/rechargeAccount" exact={true}>
           <RechargeAccount />
         </Route>
-        {/* One Auction */}
-        <Route path="/message/:id">
-          <ViewMessage />
-        </Route>
+
+        {/* Auction Detail */}
+        <Route path="/auctionDetail/:idAuction" component={AuctionDetail} exact={true} />
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>

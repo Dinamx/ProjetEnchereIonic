@@ -11,10 +11,12 @@ import {
     IonList,
     IonRow,
 } from '@ionic/react';
+import { useHistory } from 'react-router';
 
 
 
 const Auction: React.FC = () => {
+    const history = useHistory();
     return (
         <IonGrid fixed>
             <IonRow>
@@ -31,7 +33,6 @@ const Auction: React.FC = () => {
                                 </IonLabel>
                             </IonItem>
                         </IonCardHeader>
-
                         <IonCardContent>
                             <IonList lines="none">
                                 <IonItem detail={false} >
@@ -41,7 +42,7 @@ const Auction: React.FC = () => {
                                 </IonItem>
                                 <IonItem detail={false} >
                                     {/* <IonLabel> */}
-                                    <IonButton>See Mor  e</IonButton>
+                                    <IonButton onClick={() => { history.push('/auctionDetail/1') }}>SeeMore</IonButton>
                                     {/* <h3>About Blabla</h3> */}
                                     {/* </IonLabel> */}
                                 </IonItem>

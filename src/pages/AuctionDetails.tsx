@@ -1,9 +1,14 @@
 import { useState } from 'react';
 import { Message } from '../data/messages';
 import {
+    IonBackButton,
     IonButtons,
     IonContent,
+    IonHeader,
+    IonItem,
+    IonList,
     IonMenuButton,
+    IonPage,
     IonSplitPane,
     IonTitle,
     IonToolbar,
@@ -17,25 +22,32 @@ interface IdAuction
     }> { }
 
 const AuctionDetail: React.FC<IdAuction> = ({ match }) => {
+    // Find The Auction Details
+
+    // Find all person who participated to the Auction
     console.log(match.params.idAuction);
     const [messages, setMessages] = useState<Message[]>([]);
     return (
-
-        <IonSplitPane when="xl" contentId="main">
-            {/* Menu and all Links */}
-            <Menu></Menu>
-            <div className="ion-page" id="main">
+        <IonPage>
+            <IonHeader>
                 <IonToolbar>
-                    <IonButtons slot="start">
-                        <IonMenuButton />
-                    </IonButtons>
-                    <IonTitle>Voici l'enchere numero </IonTitle>
+                    <IonTitle>
+                        <img src="path/to/header/photo.jpg" alt="Header Photo" />
+                    </IonTitle>
                 </IonToolbar>
-                <IonContent className="ion-padding">
-                    <h3></h3>
-                </IonContent>
-            </div>
-        </IonSplitPane>
+            </IonHeader>
+            <IonContent>
+                <IonList>
+                    <IonItem>Element 1</IonItem>
+                    <IonItem>Element 2</IonItem>
+                    <IonItem>Element 3</IonItem>
+                    {/* Add more elements as needed */}
+                </IonList>
+                <IonButtons slot="start">
+                    <IonBackButton text="retour" />
+                </IonButtons>
+            </IonContent>
+        </IonPage>
     )
 };
 
