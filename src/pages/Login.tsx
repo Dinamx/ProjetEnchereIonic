@@ -21,24 +21,22 @@ import {
     IonToolbar,
     useIonViewWillEnter
 } from '@ionic/react';
-import { useHistory } from 'react-router';
 import './Login.css';
+import axios from 'axios';
+import { baseUrl } from '../data/webService';
+import { useHistory } from 'react-router-dom';
 
 const Login: React.FC = () => {
 
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+    const history = useHistory();
+    const [username, setUsername] = useState('Poseidon');
+
+    const [password, setPassword] = useState('Poseidon');
     const [formSubmitted, setFormSubmitted] = useState(false);
     const [usernameError, setUsernameError] = useState(false);
     const [passwordError, setPasswordError] = useState(false);
-
-    const history = useHistory();
-
-
-    const login = async (e: React.FormEvent) => {
-        history.push('/home', { direction: 'none' });
-        // setLocalStorage('id');
-        // e.preventDefault();
+    const url = baseUrl();
+    const login = (e: React.FormEvent) => {
         setFormSubmitted(true);
         if (!username) {
             setUsernameError(true);
@@ -46,24 +44,48 @@ const Login: React.FC = () => {
         if (!password) {
             setPasswordError(true);
         }
+        // Raha samy tsy vide
         if (username && password) {
-            //   await setIsLoggedIn(true);
-            //   await setUsernameAction(username);
-            // history.push('/tabs/schedule', { direction: 'none' });
+            try {
+                const log = {
+                    "email": username,
+                    "mdp": password,
+                }
+                axios
+                    .post(url + '/users/signin', log)
+                    .then(res => {
+                        console.log("ok");
+                        console.log(res.data);
+                        console.log("res");
+                        // localStorage.setItem('connected', JSON.stringify(res.data));
+                        // const stuff = localStorage.getItem('connected');
+                        // console.log(localStorage.getItem('connected'));
+                        console.log(res.data);
+                        localStorage.setItem('iduser', res.data.idutilisateur.id);
+                        localStorage.setItem('token', res.data.token);
+                        history.replace('/home');
+                    })
+                    .catch(error => alert(error));
+                // .catch(error => console.log(error));
+
+                // history.push('/home', { direction: 'none' });
+            } catch (error) {
+                alert(error);
+                throw error;
+            }
         }
-
     };
 
-    useIonViewWillEnter(() => {
-        const msgs = getMessages();
-        // setMessages(msgs);
-    });
+    // useIonViewWillEnter(() => {
+    //     const msgs = getMessages();
+    //     // setMessages(msgs);
+    // });
 
-    const refresh = (e: CustomEvent) => {
-        setTimeout(() => {
-            e.detail.complete();
-        }, 3000);
-    };
+    // const refresh = (e: CustomEvent) => {
+    //     setTimeout(() => {
+    //         e.detail.complete();
+    //     }, 3000);
+    // };
 
     return (
         <IonPage id="home-page">
@@ -73,9 +95,9 @@ const Login: React.FC = () => {
                 </IonToolbar>
             </IonHeader>
             <IonContent fullscreen>
-                <IonRefresher slot="fixed" onIonRefresh={refresh}>
+                {/* <IonRefresher slot="fixed" onIonRefresh={refresh}>
                     <IonRefresherContent></IonRefresherContent>
-                </IonRefresher>
+                </IonRefresher> */}
 
                 <IonHeader collapse="condense">
                     <IonToolbar>
@@ -103,7 +125,7 @@ const Login: React.FC = () => {
                         <form noValidate onSubmit={login}>
                             <IonList>
                                 <IonItem>
-                                    <IonLabel position="stacked" color="primary">Username</IonLabel>
+                                    <IonLabel position="stacked" color="primary">Email</IonLabel>
                                     <IonInput name="username" type="text" value={username} spellCheck={false} autocapitalize="off" onIonChange={e => setUsername(e.detail.value!)}
                                         required>
                                     </IonInput>
@@ -111,7 +133,7 @@ const Login: React.FC = () => {
 
                                 {formSubmitted && usernameError && <IonText color="danger">
                                     <p className="ion-padding-start">
-                                        Username is required
+                                        Email is required
                                     </p>
                                 </IonText>}
 
@@ -131,6 +153,7 @@ const Login: React.FC = () => {
                             <IonRow>
                                 <IonCol>
                                     <IonButton type="submit" expand="block">Login</IonButton>
+                                    {/* <IonButton type="submit" onClick={login} expand="block">Login</IonButton> */}
                                 </IonCol>
 
                             </IonRow>
@@ -146,7 +169,7 @@ const Login: React.FC = () => {
                 </IonCard>
 
             </IonContent>
-        </IonPage>
+        </IonPage >
     );
 };
 

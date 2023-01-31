@@ -35,7 +35,7 @@ setupIonicReact();
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
-      <IonRouterOutlet>
+      <IonRouterOutlet >
         <Route path="/" exact={true}>
           {/* <Redirect to="/login" /> */}
           <Redirect to="/login" />
@@ -49,9 +49,10 @@ const App: React.FC = () => (
           <Signup />
         </Route>
         {/* List of All Auctions */}
-        <Route path="/home" exact={true}>
+        {/* <Route path="/home" exact={true}>
           <Home />
-        </Route>
+        </Route> */}
+        <Route path="/home" component={Home} exact={true} />
         {/* List of an auction */}
         <Route path="/auction/:id" exact={true}>
         </Route>

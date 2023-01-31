@@ -20,6 +20,8 @@ import {
     useIonViewWillEnter
 } from '@ionic/react';
 import { useHistory } from 'react-router';
+import { baseUrl, useSignup } from '../data/webService';
+import axios from 'axios';
 
 const Signup: React.FC = () => {
 
@@ -30,11 +32,26 @@ const Signup: React.FC = () => {
 
     const history = useHistory();
 
+    const url = baseUrl();
 
-    const signup = async (e: React.FormEvent) => {
+    const handleInscription = async (e: React.FormEvent) => {
+        try {
+            const users =
+            {
+                "nom": name,
+                "prenom": lastName,
+                "email": email,
+                "mdp": password,
+            }
+            console.log("ok" + url + '/users/signup');
+            await axios.post(url + '/users/signup', users);
+            alert('Response');
+            history.push('/login', { direction: 'none' });
+        } catch (error) {
+            alert(error);
+            throw error;
+        }
 
-        // Ketreana try catch kely au cas ou misy bleme ny exception
-        history.push('/login', { direction: 'none' });
     };
 
     useIonViewWillEnter(() => {
@@ -73,39 +90,39 @@ const Signup: React.FC = () => {
                     <img src="assets/img/appicon.svg" alt="Ionic logo" />
                 </div> */}
 
-                <form noValidate onSubmit={signup}>
-                    <IonList>
-                        <IonItem>
-                            <IonLabel position="stacked" color="primary">Name</IonLabel>
-                            <IonInput name="Name" type="text" value={name} spellCheck={false} autocapitalize="off" onIonChange={e => setName(e.detail.value!)}
-                                required>
-                            </IonInput>
-                        </IonItem>
-                        <IonItem>
-                            <IonLabel position="stacked" color="primary">Last Name (Username)</IonLabel>
-                            <IonInput name="LastName" type="password" value={lastName} onIonChange={e => setLastName(e.detail.value!)}>
-                            </IonInput>
-                        </IonItem>
-                        <IonItem>
-                            <IonLabel position="stacked" color="primary">Email</IonLabel>
-                            <IonInput name="Email" type="text" value={email} spellCheck={false} autocapitalize="off" onIonChange={e => setEmail(e.detail.value!)}
-                                required>
-                            </IonInput>
-                        </IonItem>
-                        <IonItem>
-                            <IonLabel position="stacked" color="primary">Password</IonLabel>
-                            <IonInput name="Password" type="text" value={password} spellCheck={false} autocapitalize="off" onIonChange={e => setPassword(e.detail.value!)}
-                                required>
-                            </IonInput>
-                        </IonItem>
-                    </IonList>
+                {/* <form noValidate onSubmit={handleInscription}> */}
+                <IonList>
+                    <IonItem>
+                        <IonLabel position="stacked" color="primary">Name</IonLabel>
+                        <IonInput name="Name" type="text" value={name} spellCheck={false} autocapitalize="off" onIonChange={e => setName(e.detail.value!)}
+                            required>
+                        </IonInput>
+                    </IonItem>
+                    <IonItem>
+                        <IonLabel position="stacked" color="primary">Last Name (Username)</IonLabel>
+                        <IonInput name="LastName" type="text" value={lastName} onIonChange={e => setLastName(e.detail.value!)}>
+                        </IonInput>
+                    </IonItem>
+                    <IonItem>
+                        <IonLabel position="stacked" color="primary">Email</IonLabel>
+                        <IonInput name="Email" type="text" value={email} spellCheck={false} autocapitalize="off" onIonChange={e => setEmail(e.detail.value!)}
+                            required>
+                        </IonInput>
+                    </IonItem>
+                    <IonItem>
+                        <IonLabel position="stacked" color="primary">Password</IonLabel>
+                        <IonInput name="Password" type="text" value={password} spellCheck={false} autocapitalize="off" onIonChange={e => setPassword(e.detail.value!)}
+                            required>
+                        </IonInput>
+                    </IonItem>
+                </IonList>
 
-                    <IonRow>
-                        <IonCol>
-                            <IonButton type="submit" expand="block">Signup</IonButton>
-                        </IonCol>
-                    </IonRow>
-                </form>
+                <IonRow>
+                    <IonCol>
+                        <IonButton type="submit" expand="block" onClick={handleInscription}>Signup</IonButton>
+                    </IonCol>
+                </IonRow>
+                {/* </form> */}
                 <IonRow>
                     <IonCol>
                         <IonButton routerLink="/login" color="light" expand="block">Login</IonButton>

@@ -6,7 +6,7 @@ const routes = {
     appPages: [
         { title: 'Home', path: '/home', icon: addCircleOutline },
         { title: 'Ajouter une nouvelle enchere', path: '/auction/new', icon: peopleOutline },
-        { title: 'Mes encheres', path: '/auctionDone', icon: albums },
+        // { title: 'Mes encheres', path: '/auctionDone', icon: albums },
         { title: 'Recharger mon compte', path: '/rechargeAccount', icon: mapOutline },
         { title: 'Notification', path: '/notifications', icon: informationCircleOutline }
     ]
@@ -23,7 +23,6 @@ const Menu: React.FC = () => {
     const location = useLocation();
     function renderlistItems(list: Pages[]) {
         return list
-            // .filter(route => !!route.path)
             .map(p => (
                 <IonMenuToggle key={p.title} auto-hide="false">
                     <IonItem detail={false} routerLink={p.path} routerDirection="none" className={location.pathname.startsWith(p.path) ? 'selected' : undefined}>

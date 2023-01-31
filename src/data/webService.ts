@@ -2,6 +2,9 @@ import axios from 'axios';
 import { useHistory } from 'react-router';
 
 
+export function baseUrl(): string {
+    return 'http://localhost:8080';
+}
 const apiUrl = 'http://localhost:8080';
 
 // connexion
@@ -38,9 +41,13 @@ export const useSignup = async (name: string, lastname: string, email: string, p
         console.log("ok");
 
         const response = await axios.post(apiUrl + '/users/signup', users);
-        history.push('liste');
+
+        alert('Response');
+        history.push('/login', { direction: 'none' });
+
         return response.data;
     } catch (error) {
+        alert(error);
         throw error;
     }
 };
@@ -55,7 +62,6 @@ export const useSearchCriteria = async (culteFrequence: { min: string, max: stri
 ) => {
     try {
         console.log(apiUrl + '/searchCriteria');
-
         const response = await axios.post('http://localho   st:8080/searchCriteria', { culteFrequence, salaire, taille, poids, age, bacc });
     } catch (error) {
         throw error;
