@@ -12,6 +12,7 @@ const AddAuction: React.FC = () => {
     const [productDescription, setProductDescription] = useState("");
     const [categoryId, setCategoryId] = useState(1);
     const [photo, setPhoto] = useState("");
+    const [image, setImage] = useState('');
     const [productName, setProductName] = useState("");
     const [auctionDate, setAuctionDate] = useState("2023-01-20T06:10:58.453+00:00");
     const handleSubmit = () => {

@@ -6,7 +6,7 @@ const routes = {
     appPages: [
         { title: 'Home', path: '/home', icon: addCircleOutline },
         { title: 'Ajouter une nouvelle enchere', path: '/auction/new', icon: peopleOutline },
-        { title: 'Mes encheres', path: '/myAuctions', icon: albums },
+        { title: 'Mes encheres', path: '/auctionDone', icon: albums },
         { title: 'Recharger mon compte', path: '/rechargeAccount', icon: mapOutline },
         { title: 'Notification', path: '/notifications', icon: informationCircleOutline }
     ]

@@ -12,23 +12,11 @@ import {
     IonRow,
 } from '@ionic/react';
 import { useHistory } from 'react-router';
-import Countdown from 'react-countdown-now';
-import { useEffect, useState } from 'react';
 
 
 
 const Auction: React.FC = () => {
-
-    const [list, setList] = useState([]);
     const history = useHistory();
-
-    useEffect(() => {
-        const fetchData = async () => {
-            const data = await getListeEncheres();
-            setList(data);
-        };
-        fetchData();
-    }, []);
     return (
         <IonGrid fixed>
             <IonRow>
@@ -49,20 +37,12 @@ const Auction: React.FC = () => {
                             <IonList lines="none">
                                 <IonItem detail={false} >
                                     <IonLabel>
-                                        <h3>Description</h3>
-                                        <h6 style={{ marginRight: "right" }}>
-                                            {/* <Countdown date={new Date("YYYY-MM-DDTHH:mm:ss")} /> */}
-                                            <Countdown date={new Date("2023-01-31T00:00:00")} />
-                                        </h6>
+                                        <h3>Ma surenchere ; </h3>
                                     </IonLabel>
-
                                 </IonItem>
-                                <IonItem detail={false} >
-                                    {/* <IonLabel> */}
+                                {/* <IonItem detail={false} >
                                     <IonButton onClick={() => { history.push('/auctionDetail/1') }}>SeeMore</IonButton>
-                                    {/* <h3>About Blabla</h3> */}
-                                    {/* </IonLabel> */}
-                                </IonItem>
+                                </IonItem> */}
                             </IonList>
                         </IonCardContent>
                     </IonCard>
@@ -73,5 +53,3 @@ const Auction: React.FC = () => {
 };
 
 export default Auction;
-
-

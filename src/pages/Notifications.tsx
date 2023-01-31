@@ -10,6 +10,7 @@ import {
     IonToolbar,
 } from '@ionic/react';
 import Menu from '../components/Menu';
+import Notif from '../components/Notif';
 
 
 const Notifications: React.FC = () => {
@@ -29,7 +30,7 @@ const Notifications: React.FC = () => {
                 <IonContent className="ion-padding">
                     <IonList>
                         <IonItem>
-                            <IonLabel>Notification</IonLabel>
+                            <Notif></Notif>
                         </IonItem>
                     </IonList>
                 </IonContent>
