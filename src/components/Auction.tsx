@@ -17,11 +17,26 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { baseUrl } from '../data/webService';
 
+interface detailsenchere {
+    datefin: Date,
+    dateheureenchere: Date,
+    description: string,
+    descriptionenchere: string,
+    duree: string,
+    idcategorieproduit: string,
+    idenchere: string
+    idutilisateur: string
+    nom: string
+    nomproduit: string
+    photo: string
+    prenom: string
+    prixminimumvente: string
+}
 
 
 const Auction: React.FC = () => {
 
-    const [detailAuction, setDetailAuction] = useState<Array<any>>([]);
+    const [detailAuction, setDetailAuction] = useState<Array<detailsenchere>>([]);
     const history = useHistory();
 
     const url = baseUrl();
@@ -74,7 +89,7 @@ const Auction: React.FC = () => {
                                         </IonItem>
                                         <IonItem detail={false} >
                                             {/* <IonLabel> */}
-                                            <IonButton onClick={() => { history.push('/auctionDetail/{result.idenchere}') }}>SeeMore</IonButton>
+                                            <IonButton onClick={() => { history.push('/auctionDetail/' + result.idenchere) }}>SeeMore</IonButton>
                                             {/* <h3>About Blabla</h3> */}
                                             {/* </IonLabel> */}
                                         </IonItem>

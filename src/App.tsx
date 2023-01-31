@@ -54,8 +54,7 @@ const App: React.FC = () => (
         </Route> */}
         <Route path="/home" component={Home} exact={true} />
         {/* List of an auction */}
-        <Route path="/auction/:id" exact={true}>
-        </Route>
+        <Route path="/auction/:id" exact={true}></Route>
         {/* Add an auction */}
         <Route path="/auction/new" exact={true}>
           <AddAuction />
